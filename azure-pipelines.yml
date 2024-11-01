@@ -26,9 +26,13 @@ stages:
   - job: BuildJob
     pool: myAgentPool
     steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.x'
+        
     - script: |
-        conda env create -f environment.yml
-      workingDirectory: $(projectRoot)
+        python -m pip install --upgrade pip
+        pip install -r requirements.yml
       displayName: "Install requirements"
 
     - task: ArchiveFiles@2
