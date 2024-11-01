@@ -27,7 +27,7 @@ stages:
     pool: myAgentPool
     steps:
     - script: |
-        pip install -r requirements.txt
+        conda env create -f environment.yml
       workingDirectory: $(projectRoot)
       displayName: "Install requirements"
 
